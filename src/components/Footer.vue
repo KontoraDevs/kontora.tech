@@ -6,34 +6,31 @@
           class="col-xl-6 col-bg-6 col-md-6 col-sm-12 pbelow"
           style="color: white;"
         >
-          <span>© 2020 Copyright: Hrishikesh Paul</span>
+          <span>© 2023 Copyright: Kontora</span>
         </div>
 
         <div class="col-xl-6 col-bg-6 col-md-6 col-sm-12">
           <div class="text-center">
             <button
-              class="btn btn-outline-secondary mx-2 "
-              @click="open('linkedin')"
+                class="btn btn-outline-secondary mx-2 "
+                @click="open('telegram')"
+                v-tooltip.bottom="'Telegram'"
             >
-              <i class="fab fa-linkedin"></i>
+              <i class="fab fa-telegram"></i>
             </button>
             <button
-              class="btn btn-outline-secondary mx-2"
-              @click="open('github')"
+                class="btn btn-outline-secondary mx-2"
+                @click="open('github')"
+                v-tooltip.bottom="'GitHub'"
             >
               <i class="fab fa-github"></i>
             </button>
             <button
-              class="btn btn-outline-secondary mx-2"
-              @click="open('angellist')"
+                class="btn btn-outline-secondary mx-2"
+                @click="open('mail')"
+                v-tooltip.bottom="'Mail'"
             >
-              <i class="fab fa-angellist"></i>
-            </button>
-            <button
-              class="btn btn-outline-secondary mx-2"
-              @click="open('resume')"
-            >
-              <i class="fa fa-file"></i>
+              <i class="fa fa-envelope"></i>
             </button>
           </div>
         </div>
@@ -53,6 +50,8 @@ export default {
       github: info.links.github,
       angellist: info.links.angellist,
       resume: info.links.resume,
+      mail: info.links.mail,
+      telegram: info.links.telegram,
     };
   },
   methods: {
@@ -69,6 +68,12 @@ export default {
           break;
         case "resume":
           window.open(this.resume, "_blank");
+          break;
+        case "telegram":
+          window.open(this.telegram, "_blank");
+          break;
+        case "mail":
+          window.open(this.mail, "_blank");
           break;
       }
     },

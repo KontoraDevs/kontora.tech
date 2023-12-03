@@ -17,7 +17,7 @@
         <span
           class="title text-center"
           :class="{ pgray: !nightMode, 'text-light': nightMode }"
-          >portfolio.</span
+          >портфолио.</span
         >
       </div>
       <hr
@@ -26,7 +26,7 @@
       />
 
       <vue-tabs :activeTextColor="!nightMode ? '#535A5E' : '#dfdfdf'">
-        <v-tab title="development">
+        <v-tab title="Проекты">
           <br />
           <div class="row">
             <div
@@ -49,12 +49,40 @@
               />
             </div>
           </div>
-          <div class="text-center py-3" v-if="showBtn !== 'show less'">
+<!--          <div class="text-center py-3" v-if="showBtn !== 'show less'">
             <button class="btn" @click.prevent="showMore">{{ showBtn }}</button>
-          </div>
+          </div>-->
         </v-tab>
 
-        <v-tab title="design">
+        <v-tab title="GitHub">
+          <br />
+          <div class="row">
+            <div
+                class="col-xl-4 col-bg-4 col-md-6 col-sm-12"
+                v-for="(portfolio, idx) in github_info"
+                :key="portfolio.name"
+            >
+              <Card
+                  :style="{ 'transition-delay': (idx % 3) / 4.2 + 's' }"
+                  :portfolio="portfolio"
+                  @show="showModalFn"
+                  data-aos="fade-up"
+                  :nightMode="nightMode"
+                  data-aos-offset="100"
+                  data-aos-delay="10"
+                  data-aos-duration="500"
+                  data-aos-easing="ease-in-out"
+                  data-aos-mirror="true"
+                  data-aos-once="true"
+              />
+            </div>
+          </div>
+          <!--          <div class="text-center py-3" v-if="showBtn !== 'show less'">
+                      <button class="btn" @click.prevent="showMore">{{ showBtn }}</button>
+                    </div>-->
+        </v-tab>
+
+<!--        <v-tab title="GitHub">
           <div class="row">
             <div
               v-for="(design, idx) in desgin_info"
@@ -106,7 +134,7 @@
             </div>
           </div>
           <br />
-        </v-tab>
+        </v-tab>-->
       </vue-tabs>
     </div>
     <transition name="modal">
@@ -164,12 +192,13 @@ export default {
       all_info: info.portfolio,
       desgin_info: info.portfolio_design,
       portfolio_info: [],
+      github_info: info.githubs,
       showModal: false,
       showDesignModal: false,
       modal_info: {},
       design_modal_info: {},
       number: 3,
-      showBtn: "show more",
+      showBtn: "показать ещё",
       shower: 0,
       data: [
         '<div class="example-slide">Slide 1</div>',

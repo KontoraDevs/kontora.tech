@@ -17,18 +17,18 @@
           <span
             class="home-title"
             :class="{ pgray: !nightMode, 'text-light': nightMode }"
-            >hello there!</span
+            >Контора!</span
           >
           <div>
             <p v-html="description"></p>
           </div>
           <div class="text-center pb-4">
             <button
-              class="btn btn-outline-secondary mx-2 "
-              @click="open('linkedin')"
-              v-tooltip.bottom="'LinkedIn'"
+                class="btn btn-outline-secondary mx-2 "
+                @click="open('telegram')"
+                v-tooltip.bottom="'Telegram'"
             >
-              <i class="fab fa-linkedin"></i>
+              <i class="fab fa-telegram"></i>
             </button>
             <button
               class="btn btn-outline-secondary mx-2"
@@ -38,18 +38,11 @@
               <i class="fab fa-github"></i>
             </button>
             <button
-              class="btn btn-outline-secondary mx-2"
-              @click="open('angellist')"
-              v-tooltip.bottom="'AngelList'"
+                class="btn btn-outline-secondary mx-2"
+                @click="open('mail')"
+                v-tooltip.bottom="'Mail'"
             >
-              <i class="fab fa-angellist"></i>
-            </button>
-            <button
-              class="btn btn-outline-secondary mx-2"
-              @click="open('resume')"
-              v-tooltip.bottom="'Resume'"
-            >
-              <i class="fa fa-file"></i>
+              <i class="fa fa-envelope"></i>
             </button>
           </div>
         </div>
@@ -80,6 +73,8 @@ export default {
       name: info.name,
       linkedin: info.links.linkedin,
       github: info.links.github,
+      mail: info.links.mail,
+      telegram: info.links.telegram,
       angellist: info.links.angellist,
       resume: info.links.resume
     };
@@ -98,6 +93,12 @@ export default {
           break;
         case "resume":
           window.open(this.resume, "_blank");
+          break;
+        case "telegram":
+          window.open(this.telegram, "_blank");
+          break;
+        case "mail":
+          window.open(this.mail, "_blank");
           break;
       }
     },

@@ -62,9 +62,9 @@
               :class="{ pgray: !nightMode, 'bg-secondary': nightMode }"
             />
             <button class="btn w-25 mr-3" @click="open(portfolio.github)">
-              github
+              GitHub
             </button>
-            <button class="btn w-25" @click="$emit('close')">close</button>
+            <button class="btn w-25" @click="$emit('close')">Закрыть</button>
           </div>
         </div>
       </div>

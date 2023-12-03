@@ -17,7 +17,7 @@
         <span
           class="title text-center"
           :class="{ pgray: !nightMode, 'text-light': nightMode }"
-          >contact.</span
+          >контакты.</span
         >
       </div>
       <hr
@@ -36,7 +36,7 @@
             type="text"
             name="user_name"
             v-model="name"
-            placeholder="name"
+            placeholder="имя"
             class="pinput"
             :class="{
               pgray: !nightMode,
@@ -57,7 +57,7 @@
             type="email"
             name="user_email"
             v-model="email"
-            placeholder="email"
+            placeholder="почта"
             class="pinput"
             :class="{
               pgray: !nightMode,
@@ -77,7 +77,7 @@
           <textarea
             name="message"
             v-model="text"
-            placeholder="message"
+            placeholder="сообщение"
             class="pinput"
             rows="4"
             :class="{
@@ -97,7 +97,7 @@
           data-aos-duration="1000"
           data-aos-offset="50"
         >
-          Send
+          Отправить
         </button>
       </div>
 
@@ -148,14 +148,14 @@ export default {
     sendEmail() {
       if (!this.email || !this.name || !this.text) {
         this.showSnackbar = true;
-        this.snackbarMessage = "Please all the fields";
+        this.snackbarMessage = "Пожалуйста, заполните все поля";
         this.snackbarColor = "rgb(212, 149, 97)";
       } else {
         var obj = {
           user_email: this.email,
           from_name: this.name,
           message_html: this.text,
-          to_name: "Hrishikesh Paul",
+          to_name: "Контора",
         };
 
         emailjs
@@ -168,7 +168,7 @@ export default {
           .then(
             (result) => {
               this.showSnackbar = true;
-              this.snackbarMessage = "Thanks! Message recieved.";
+              this.snackbarMessage = "Спасибо! Сообщение отправлено.";
               this.snackbarColor = "#1aa260";
 
               this.email = "";

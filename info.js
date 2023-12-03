@@ -1,7 +1,7 @@
 let info = {
   name: "Hrishikesh Paul",
-  logo_name: "paul",
-  flat_picture: require("./src/assets/potrait.jpg"),
+  logo_name: "Kontora",
+  flat_picture: require("./src/assets/logo.jpg"),
   config: {
     use_cookies: true,
     navbar: {
@@ -9,41 +9,70 @@ let info = {
     }
   },
   description:
-    "A second year Computer Science graduate student at Indiana University Bloomington with an interest in Software Development, UX Design and Artificial Intelligence - and seeking exciting opportunities related to the same.<br><br>I am a detail oriented person and I keep my goals and tasks organized to maintain productivity. I would bring to table a wide range of software skills, ranging from design and development to writing scripts for intelligent agents. I believe that the skills that I have attained from the dynamic environment and competitive university life define me, and I am looking forward to implementing and polishing them in any opportunity that I receive. ",
+    "<br>Мы - команда \"Контора\", специализирующаяся на разработке сложных информационных систем. Наш коллектив представляет " +
+      "собой объединение опытных фронтенд-разработчиков, бэкенд-специалистов и фуллстек разработчиков под руководством опытного тимлида..<br><br>" +
+      "Мы гордимся разносторонним опытом, охватывающим создание интуитивно понятных интерфейсов и реализацию сложных технических " +
+      "проектов. Наш тимлид иногда утверждает, что у нас в кабинете больше кофейных чашек, чем строк кода, но мы уверены, " +
+      "что именно это делает нас такими эффективными! Наша команда готова принять вызов любой сложности и предоставить инновационные " +
+      "решения для ваших потребностей в сфере веб-разработки.",
   links: {
     linkedin: "https://www.linkedin.com/in/hrishikeshpaul/",
-    github: "https://github.com/hrishikeshpaul",
+    github: "https://github.com/KontoraDevs",
+    telegram: "https://t.me/santariver",
+    mail: "mailto:kontoradevs@yandex.ru",
     angellist: "https://angel.co/u/hrishikesh-paul",
     resume:
       "https://github.com/hrishikeshpaul/portfolio-template/blob/master/src/assets/pdfs/Resume.pdf"
   },
   education: [
     {
-      name: "Indiana University Bloomington",
-      place: "USA",
-      date: "Aug, 2019 - May, 2021",
-      degree: "Masters in Computer Science",
-      gpa: "3.7/4.0",
+      name: "Оренбургский государственный университет",
+      place: "Россия",
+      date: "Сентябрь, 2017 - Июнь, 2023",
+      degree: "Математика и компьютерные науки",
+      gpa: "Бакалавр",
+      secondDegree: "Системы искусственного интеллекта",
+      secondGpa: "Магистратура",
       description:
-        "Currently pursuing my Master's in Computer Science, while specializing in the field of Artificial Intelligence and Machine Learning.",
+        "Закончил получение бакалавра по направлению Математика и компьютерные науки, основательно изучив основы математики " +
+          "и программирования. Завершил обучение по магистратуре по направлению Системы искусственного интеллекта, где " +
+          "специализировался в области машинного обучения и анализа данных.",
       skills: [
-        "Artificial Intelligence",
-        "Software Engineering",
-        "Algorithms",
-        "Computer Vision",
-        "Music Data Mining",
-        ,
-        "OS"
+        "Искусственный интеллект",
+        "Программная инженерия",
+        "Алгоритмы",
+        "Операционные системы",
+        "Языки программирования",
       ]
     },
     {
-      name: "Manipal Institute of Technology",
-      place: "India",
-      date: "Aug, 2015 - July, 2019",
-      degree: "Bachelors in Computer and Communication",
-      gpa: "8.0/10.0",
+      name: "Оренбургский государственный университет",
+      place: "Россия",
+      date: "Сентябрь, 2017 - Июнь, 2021",
+      degree: "Математика и компьютерные науки",
+      gpa: "Бакалавр",
       description:
-        "Graduated from Manipal Institute of Technology, Manipal with a bachelors degree in Computer and Communications Engineering.",
+        "С успехом завершил программу бакалавриата по направлению 'Математика и компьютерные науки', освоивший аспекты " +
+          "аналитической математики и информатики. Этот фундаментальный курс укрепил мои навыки в алгоритмическом мышлении и " +
+          "программировании, обеспечивая глубокое понимание базовых концепций.",
+      skills: [
+        "Математика",
+        "Программирование",
+        "Алгоритмы",
+        "Искусственный Интеллект",
+        "Data Science",
+        "Анализ Данных",
+        "Криптография"
+      ]
+    },
+    {
+      name: "Оренбургский государственный университет",
+      place: "Россия",
+      date: "Сентябрь, 2021 - Июнь, 2023",
+      degree: "Системы искуственного интеллекта",
+      gpa: "Магистратура",
+      description:
+          "Graduated from Manipal Institute of Technology, Manipal with a bachelors degree in Computer and Communications Engineering.",
       skills: [
         "AI",
         "Neural Netwroks",
@@ -57,49 +86,40 @@ let info = {
   ],
   experience: [
     {
-      name: "Cyberinfrastructure for Network Science Center",
-      place: "Bloomington, Indiana",
-      date: "Jun, 2020 - Present",
-      position: "Research Assistant; Full Stack Developer",
-      description:
-        "Worked as a Software Developer for the Human BioMolecular Atlas Program (funded by the NIH), building innovative visualization tools to envision large biomedical datasets.",
-      skills: ["Angular", "Node.js", "Vega", "Shell", "Typescript"]
-    },
-    {
-      name: "Skylark Drones",
-      place: "Bangalore, India",
-      date: "Jan, 2019 - Jun, 2021",
+      name: "Getpolis",
+      place: "Россия, Ростов-на-Дону",
+      date: "Декабрь, 2023 - Наст. время",
       position: "Full Stack Web Developer",
       description:
-        "Worked as a full stack web developer, implementing various features and fixing bugs for Skylark Drones’ central management system called Operations Portal and Data Mining Server.",
-      skills: ["MongoDB", "Flask", "VueJS", "NGINX"]
+        "Работа над веб-проектом, который является агрегатором страховых предложений, сотрудничающий с 15 крупнейшими страховыми компаниями России, такие как: АльфаСтрахование, Ингосстрах, Росгосстрах и другие.",
+      skills: ["PHP", "Laravel", "Docker", "Linux", "VUE", "PostgreSQL", "JavaScript", "HTML", "CSS", "Vuetify", "SASS", "Tailwind", "Bootstrap"]
     },
     {
-      name: "Hridayam Soft Solutions",
-      place: "Mumbai, India",
-      date: "May, 2018 - Jun, 2018",
-      position: "Computer Vision Engineer",
-      description:
-        "Scripted an algorithm for extracting information (such as date, invoice number etc.) from scanned images of invoices, built a web interface for using the former mentioned machine.",
-      skills: ["Python", "OpenCV", "PyTesseract", "AngularJS", "NodeJS"]
-    },
-    {
-      name: "Elementail Labs",
-      place: "Mumbai, India",
-      date: "May, 2017 - July, 2017",
+      name: "OrbitSoft",
+      place: "Россия, Ростов-на-Дону",
+      date: "Февраль, 2022 - Ноябрь, 2023",
       position: "Full Stack Web Developer",
       description:
-        "Implemented various contracts and deployed them on the upcoming blockchain technology - Ethereum, while also working as a MEAN stack web developer for Elemential Labs’ website.",
-      skills: ["MongoDB", "AngularJS", "NodeJS", "ExpressJS"]
+        "",
+      skills: ["PHP", "Laravel", "PostgreSQL", "Linux", "VUE", "JavaScript", "Docker"]
     },
     {
-      name: "Viteos Capital Market Services s",
-      place: "Mumbai, India",
-      date: "May, 2016 - July, 2016",
-      position: "Software Developer",
+      name: "Freelance",
+      place: "Россия",
+      date: "May, 2021 - Февраль, 2022",
+      position: "Full Stack Web Developer",
       description:
-        "Evaluated technologies, and building proof of concept/prototype solutions for trade processing and mathematical model based evaluations, while working in the software development team.",
-      skills: ["C#", "C++", "Visual Studio"]
+        "3 месяца работы backend разработчиком в аутсорс команде над государственным проектом. С момента ухода и по сей день разработка и поддержка собственных (или на заказ) коммерческих проектов связанных с блокчейн разработкой (смарт-контракты, токены).",
+      skills: ["PHP", "Laravel", "Blockchain", "PostgreSQL", "Solidity", "Linux", "Git", "Docker", "Nginx"]
+    },
+    {
+      name: "Subbclub",
+      place: "Россия, Оренбург",
+      date: "Март, 2019 - Май, 2021",
+      position: "Backend Developer",
+      description:
+        "Backend разработчик. Работал с CMS 1C-Bitrix. Работал над разными проектами под Silex.",
+      skills: ["PHP", "CMS «1С-Битрикс»", "Silex", "Nginx", "JavaScript", "MongoDB"]
     }
   ],
   skills: [
@@ -166,66 +186,66 @@ let info = {
   ],
   portfolio: [
     {
-      name: "Sheet Recognizer",
+      name: "Степная История",
       pictures: [
         {
-          img: require("./src/assets/portfolio/msr/one.png")
+          img: require("./src/assets/portfolio/fest/one.png")
         },
         {
-          img: require("./src/assets/portfolio/msr/two.png")
+          img: require("./src/assets/portfolio/fest/two.png")
         },
         {
-          img: require("./src/assets/portfolio/msr/three.png")
+          img: require("./src/assets/portfolio/fest/three.png")
         },
-        {
-          img: require("./src/assets/portfolio/msr/four.png")
-        }
       ],
       technologies: ["Computer Vision", "OpenCV", "AI", "Flask", "Sockets"],
-      category: "Algorithm",
-      date: "Jan, 2020 - Mar, 2020",
+      category: "Лендинг",
+      date: "Август, 2022",
       github:
-        "https://github.com/hrishikeshpaul/music-sheet-recognizer-backend",
-      visit: "https://github.com/hrishikeshpaul/music-sheet-recognizer-backend",
+        "https://github.com/NoNameNoMeme/StepAndWind",
+      visit: "https://fest.stepiveter.ru/",
       description:
         "Music Sheet Recognizer (MSR) highlights basic Image Processing and Recognition. Like Optical Character Recognition, this tool is used to detect music notes and rests. It makes use of basic Computer Vision techniques such as Convolution, Edge Detections, Hough Transforms and Template Matching to detect notes and rests on a music sheet. "
     },
     {
-      name: "NoQ Job Portal",
+      name: "Taproom",
       pictures: [
         {
-          img: require("./src/assets/portfolio/noq/logo.png")
+          img: require("./src/assets/portfolio/taproom/one.png")
         },
         {
-          img: require("./src/assets/portfolio/noq/one.png")
+          img: require("./src/assets/portfolio/taproom/two.png")
         },
         {
-          img: require("./src/assets/portfolio/noq/two.png")
+          img: require("./src/assets/portfolio/taproom/three.png")
         },
         {
-          img: require("./src/assets/portfolio/noq/three.png")
+          img: require("./src/assets/portfolio/taproom/four.png")
         },
-        {
-          img: require("./src/assets/portfolio/noq/four.png")
-        }
       ],
       technologies: ["Node", "Vue", "Express", "MongoDB", "Heroku"],
-      category: "Website",
-      date: "Sep, 2019 - Dec  , 2019",
+      category: "Лендинг-магазин",
+      date: "Сентябрь 2023",
       github: "https://github.com/hrishikeshpaul/noq",
       visit: "https://noq-client.herokuapp.com/",
       description:
         "No Q, is a revolutionary tool which allows for both employers and students to skip the hassle seen in modern day career fairs. For the students, there is an intuitive profile builder where you can add things like education, skills, certifications, honors, and experiences. No Q is not only good for students, but employers as well! A common problem at modern career fairs is the number of unqualified candidates who waste their time when they could be chatting with someone else. With No Q, only the students who meet the positions’ criteria will be able to apply, and from there the recruiter can invite them to talk in more detail at the career fair through our intuitive messaging system."
     },
     {
-      name: "POST",
+      name: "Entomosphera",
       pictures: [
         {
-          img: require("./src/assets/portfolio/post/one.png")
+          img: require("./src/assets/portfolio/ent/one.png")
         },
         {
-          img: require("./src/assets/portfolio/post/two.png")
-        }
+          img: require("./src/assets/portfolio/ent/two.png")
+        },
+        {
+          img: require("./src/assets/portfolio/ent/three.png")
+        },
+        {
+          img: require("./src/assets/portfolio/ent/four.png")
+        },
       ],
       technologies: [
         "Markov Models",
@@ -234,10 +254,10 @@ let info = {
         "Vue",
         "Heroku"
       ],
-      category: "Algorithm",
-      github: "https://github.com/hrishikeshpaul/pos-tagger",
-      date: "Oct, 2019 - Nov, 2019",
-      visit: "https://post-client.herokuapp.com/",
+      category: "Магазин",
+      github: "https://github.com/dwarf133/taproom-store",
+      date: "Сентябрь, 2023 - Ноябрь, 2023",
+      visit: "https://entomosphera.com/",
       description:
         "Post is a simple algorithm that was developed to tagging a word corresponding to its part of speech. The algorithm makes of a probabilisitic approach along with some randomness, together which forms the basis of an algorithm called Gibbs Sampling."
     },
@@ -334,6 +354,60 @@ let info = {
       description:
         "Nutricare is a basic health website for users(patients) to input nutrient intake data and researchers to analyse the data with the help of graphs and tables. A researcher can conduct studies on N different subjects (patient) for a particular problem statement. Typically, a researcher will enter food item consumed by subjects over a period of time (Ex - 24hrs, or 1 week, or 1 month etc)."
     }
+  ],
+  githubs: [
+    {
+      name: "Руденко Павел, 24",
+      pictures: [
+        {
+          img: require("./src/assets/portfolio/fest/one.png")
+        },
+      ],
+      technologies: ["Computer Vision", "OpenCV", "AI", "Flask", "Sockets"],
+      category: "Лендинг",
+      date: "Август, 2022",
+      github:
+          "https://github.com/NoNameNoMeme/StepAndWind",
+      visit: "https://fest.stepiveter.ru/",
+      description:
+          "Music Sheet Recognizer (MSR) highlights basic Image Processing and Recognition. Like Optical Character Recognition, this tool is used to detect music notes and rests. It makes use of basic Computer Vision techniques such as Convolution, Edge Detections, Hough Transforms and Template Matching to detect notes and rests on a music sheet. "
+    },
+    {
+      name: "Данильчук Михаил, 22",
+      pictures: [
+        {
+          img: require("./src/assets/portfolio/taproom/one.png")
+        },
+      ],
+      technologies: ["Node", "Vue", "Express", "MongoDB", "Heroku"],
+      category: "Лендинг-магазин",
+      date: "Сентябрь 2023",
+      github: "https://github.com/hrishikeshpaul/noq",
+      visit: "https://noq-client.herokuapp.com/",
+      description:
+          "No Q, is a revolutionary tool which allows for both employers and students to skip the hassle seen in modern day career fairs. For the students, there is an intuitive profile builder where you can add things like education, skills, certifications, honors, and experiences. No Q is not only good for students, but employers as well! A common problem at modern career fairs is the number of unqualified candidates who waste their time when they could be chatting with someone else. With No Q, only the students who meet the positions’ criteria will be able to apply, and from there the recruiter can invite them to talk in more detail at the career fair through our intuitive messaging system."
+    },
+    {
+      name: "Валитов Хасан, 23",
+      pictures: [
+        {
+          img: require("./src/assets/portfolio/ent/one.png")
+        },
+      ],
+      technologies: [
+        "Markov Models",
+        "Python",
+        "Artificial Intelligence",
+        "Vue",
+        "Heroku"
+      ],
+      category: "Магазин",
+      github: "https://github.com/dwarf133/taproom-store",
+      date: "Сентябрь, 2023 - Ноябрь, 2023",
+      visit: "https://entomosphera.com/",
+      description:
+          "Post is a simple algorithm that was developed to tagging a word corresponding to its part of speech. The algorithm makes of a probabilisitic approach along with some randomness, together which forms the basis of an algorithm called Gibbs Sampling."
+    },
   ],
   portfolio_design: [
     {

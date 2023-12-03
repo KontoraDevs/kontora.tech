@@ -32,6 +32,13 @@
                   {{ e.degree || e.position }}
                   {{ e.gpa ? "(" + e.gpa + ")" : "" }}
                 </div>
+                <div
+                    class="px-2 title3"
+                    v-if="e.secondDegree"
+                >
+                  {{ e.secondDegree || e.position }}
+                  {{ e.secondGpa ? "(" + e.secondGpa + ")" : "" }}
+                </div>
                 <div class="px-2 date">{{ e.date }}</div>
                 <div class="px-2 pb-2 pt-2" style="text-align: justify;">
                   {{ e.description }}
