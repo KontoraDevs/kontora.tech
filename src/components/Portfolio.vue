@@ -54,7 +54,7 @@
           </div>-->
         </v-tab>
 
-        <v-tab title="GitHub">
+        <v-tab title="Команда">
           <br />
           <div class="row">
             <div

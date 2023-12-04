@@ -26,6 +26,51 @@ let info = {
   },
   education: [
     {
+      fio: "Руденко Павел",
+      name: "Оренбургский государственный университет",
+      place: "Россия",
+      date: "Сентябрь, 2017 - Июнь, 2021",
+      degree: "Математика и компьютерные науки",
+      gpa: "Бакалавр",
+      description:
+          "С успехом завершил программу бакалавриата по направлению 'Математика и компьютерные науки', освоивший аспекты " +
+          "аналитической математики и информатики. Этот фундаментальный курс укрепил мои навыки в алгоритмическом мышлении и " +
+          "программировании, обеспечивая глубокое понимание базовых концепций.",
+      skills: [
+        "Математика",
+        "Программирование",
+        "Алгоритмы",
+        "Искусственный Интеллект",
+        "Data Science",
+        "Анализ Данных",
+        "Криптография"
+      ]
+    },
+    {
+      fio: "Данильчук Михаил",
+      name: "Оренбургский государственный университет",
+      place: "Россия",
+      date: "Сентябрь, 2019 - Настоящее время",
+      degree: "Фундаментальная информатика и информационные технологии",
+      gpa: "Бакалавр",
+      secondDegree: "Гибкие технологии разработки корпоративных систем",
+      secondGpa: "Магистратура",
+      description:
+          "Фундаментальная информатика и информационные технологии - комплексное изучение фундаментальных основ информатики " +
+          "с акцентом на разработку и оптимизацию информационных технологий. Гибкие технологии разработки корпоративных систем - " +
+          "методы и подходы, направленные на гибкую и эффективную разработку и поддержку корпоративных систем.",
+      skills: [
+        "Алгоритмы",
+        "Операционные системы",
+        "Data Mining",
+        "Data Science",
+        "Языки программирования",
+        "Криптография",
+        "Анализ Данных"
+      ]
+    },
+    {
+      fio: "Валитов Хасан",
       name: "Оренбургский государственный университет",
       place: "Россия",
       date: "Сентябрь, 2017 - Июнь, 2023",
@@ -45,44 +90,6 @@ let info = {
         "Языки программирования",
       ]
     },
-    {
-      name: "Оренбургский государственный университет",
-      place: "Россия",
-      date: "Сентябрь, 2017 - Июнь, 2021",
-      degree: "Математика и компьютерные науки",
-      gpa: "Бакалавр",
-      description:
-        "С успехом завершил программу бакалавриата по направлению 'Математика и компьютерные науки', освоивший аспекты " +
-          "аналитической математики и информатики. Этот фундаментальный курс укрепил мои навыки в алгоритмическом мышлении и " +
-          "программировании, обеспечивая глубокое понимание базовых концепций.",
-      skills: [
-        "Математика",
-        "Программирование",
-        "Алгоритмы",
-        "Искусственный Интеллект",
-        "Data Science",
-        "Анализ Данных",
-        "Криптография"
-      ]
-    },
-    {
-      name: "Оренбургский государственный университет",
-      place: "Россия",
-      date: "Сентябрь, 2021 - Июнь, 2023",
-      degree: "Системы искуственного интеллекта",
-      gpa: "Магистратура",
-      description:
-          "Graduated from Manipal Institute of Technology, Manipal with a bachelors degree in Computer and Communications Engineering.",
-      skills: [
-        "AI",
-        "Neural Netwroks",
-        "Data Mining",
-        "Computer Vision",
-        "Pattern Recognition",
-        "HCI",
-        "Software Engineering"
-      ]
-    }
   ],
   experience: [
     {
@@ -128,13 +135,12 @@ let info = {
       info: [
         "Python",
         "Javascript",
-        "TypeScript",
-        "Java",
-        "C",
         "C++",
+        "C#",
         "SQL",
         "NoSQL",
-        "Ruby"
+        "PHP",
+        "Go",
       ],
       icon: "fa fa-code"
     },
@@ -147,19 +153,17 @@ let info = {
         "OpenCV",
         "SciPy",
         "Sklearn",
-        "LibROSA",
-        "Pillow"
       ],
       icon: "fa fa-cubes"
     },
     {
       title: "web technologies",
-      info: ["Vue", "Angular", "React", "Node", "Flask", "HTML", "CSS"],
+      info: ["Laravel", "Vue", "VueX", "Node", "Flask", "HTML", "CSS", "SASS", "LiveWire"],
       icon: "fas fa-laptop-code"
     },
     {
       title: "databases",
-      info: ["MongoDB", "MySQL", "OracleSQL", "Neo4j"],
+      info: ["MySQL", "PostgreSQL", "MongoDB", "ClickHouse", "Sphinx", "Manticore"],
       icon: "fa fa-database"
     },
     {
@@ -168,19 +172,18 @@ let info = {
         "MacOS",
         "Ubuntu",
         "Windows",
-        "Android",
+        "Docker",
         "Agile",
         "Scrum",
         "JIRA",
-        "Heroku",
         "Firebase",
-        "AWS S3"
+        "AWS S3",
       ],
       icon: "fas fa-tools"
     },
     {
       title: "design",
-      info: ["Illustrator", "XD", "Photoshop", "Final Cut Pro"],
+      info: ["Figma", "XD", "Photoshop", "Premiere Pro", "After Effects"],
       icon: "fa fa-pencil-square-o"
     }
   ],
@@ -205,7 +208,7 @@ let info = {
         "https://github.com/NoNameNoMeme/StepAndWind",
       visit: "https://fest.stepiveter.ru/",
       description:
-        "Music Sheet Recognizer (MSR) highlights basic Image Processing and Recognition. Like Optical Character Recognition, this tool is used to detect music notes and rests. It makes use of basic Computer Vision techniques such as Convolution, Edge Detections, Hough Transforms and Template Matching to detect notes and rests on a music sheet. "
+        "Лендинг"
     },
     {
       name: "Taproom",
@@ -224,12 +227,12 @@ let info = {
         },
       ],
       technologies: ["Node", "Vue", "Express", "MongoDB", "Heroku"],
-      category: "Лендинг-магазин",
+      category: "Магазин-лендинг",
       date: "Сентябрь 2023",
       github: "https://github.com/hrishikeshpaul/noq",
       visit: "https://noq-client.herokuapp.com/",
       description:
-        "No Q, is a revolutionary tool which allows for both employers and students to skip the hassle seen in modern day career fairs. For the students, there is an intuitive profile builder where you can add things like education, skills, certifications, honors, and experiences. No Q is not only good for students, but employers as well! A common problem at modern career fairs is the number of unqualified candidates who waste their time when they could be chatting with someone else. With No Q, only the students who meet the positions’ criteria will be able to apply, and from there the recruiter can invite them to talk in more detail at the career fair through our intuitive messaging system."
+        "Магазин-лендинг"
     },
     {
       name: "Entomosphera",
@@ -254,12 +257,12 @@ let info = {
         "Vue",
         "Heroku"
       ],
-      category: "Магазин",
+      category: "Магазин-лендинг",
       github: "https://github.com/dwarf133/taproom-store",
       date: "Сентябрь, 2023 - Ноябрь, 2023",
       visit: "https://entomosphera.com/",
       description:
-        "Post is a simple algorithm that was developed to tagging a word corresponding to its part of speech. The algorithm makes of a probabilisitic approach along with some randomness, together which forms the basis of an algorithm called Gibbs Sampling."
+        "Магазин-лендинг"
     },
     {
       name: "Suicide Analyzer",
@@ -360,53 +363,46 @@ let info = {
       name: "Руденко Павел, 24",
       pictures: [
         {
-          img: require("./src/assets/portfolio/fest/one.png")
+          img: require("./src/assets/portfolio/we/pasha.jpg")
         },
       ],
-      technologies: ["Computer Vision", "OpenCV", "AI", "Flask", "Sockets"],
+      technologies: ["TeamLead", "Fullstack", "PHP", "Laravel", "MySQL", "Vue"],
       category: "Лендинг",
       date: "Август, 2022",
-      github:
-          "https://github.com/NoNameNoMeme/StepAndWind",
-      visit: "https://fest.stepiveter.ru/",
+      github: "https://github.com/SantaRiver",
+      visit: "https://github.com/SantaRiver",
       description:
-          "Music Sheet Recognizer (MSR) highlights basic Image Processing and Recognition. Like Optical Character Recognition, this tool is used to detect music notes and rests. It makes use of basic Computer Vision techniques such as Convolution, Edge Detections, Hough Transforms and Template Matching to detect notes and rests on a music sheet. "
+          "С резюме можете ознакомиться в профиле ГитХаб, для этого нажмите кнопку - 'Посетить сайт'."
     },
     {
       name: "Данильчук Михаил, 22",
       pictures: [
         {
-          img: require("./src/assets/portfolio/taproom/one.png")
+          img: require("./src/assets/portfolio/we/misha.png")
         },
       ],
-      technologies: ["Node", "Vue", "Express", "MongoDB", "Heroku"],
+      technologies: ["Backend", "Python", "PHP", "Laravel", "Postgres", "FastAPI", "Pandas"],
       category: "Лендинг-магазин",
       date: "Сентябрь 2023",
-      github: "https://github.com/hrishikeshpaul/noq",
-      visit: "https://noq-client.herokuapp.com/",
+      github: "https://github.com/dwarf133",
+      visit: "https://github.com/dwarf133",
       description:
-          "No Q, is a revolutionary tool which allows for both employers and students to skip the hassle seen in modern day career fairs. For the students, there is an intuitive profile builder where you can add things like education, skills, certifications, honors, and experiences. No Q is not only good for students, but employers as well! A common problem at modern career fairs is the number of unqualified candidates who waste their time when they could be chatting with someone else. With No Q, only the students who meet the positions’ criteria will be able to apply, and from there the recruiter can invite them to talk in more detail at the career fair through our intuitive messaging system."
+          "С резюме можете ознакомиться в профиле ГитХаб, для этого нажмите кнопку - 'Посетить сайт'."
     },
     {
       name: "Валитов Хасан, 23",
       pictures: [
         {
-          img: require("./src/assets/portfolio/ent/one.png")
+          img: require("./src/assets/portfolio/we/khasan.jpg")
         },
       ],
-      technologies: [
-        "Markov Models",
-        "Python",
-        "Artificial Intelligence",
-        "Vue",
-        "Heroku"
-      ],
+      technologies: ["Frontend", "HTML", "SASS", "JavaScript", "Vue", "Vuex"],
       category: "Магазин",
-      github: "https://github.com/dwarf133/taproom-store",
-      date: "Сентябрь, 2023 - Ноябрь, 2023",
-      visit: "https://entomosphera.com/",
+      github: "https://github.com/NoNameNoMeme",
+      date: "23 Декабря, 1999",
+      visit: "https://github.com/NoNameNoMeme",
       description:
-          "Post is a simple algorithm that was developed to tagging a word corresponding to its part of speech. The algorithm makes of a probabilisitic approach along with some randomness, together which forms the basis of an algorithm called Gibbs Sampling."
+          "С резюме можете ознакомиться в профиле ГитХаб, для этого нажмите кнопку - 'Посетить сайт'."
     },
   ],
   portfolio_design: [
@@ -505,36 +501,36 @@ let info = {
   recommendations: [
     {
       title:
-        "In his internship, Hrishikesh has demonstrated excellent learning ability, and with a dedicated, task oriented approach, he was able to complete his assignment ahead of time.",
-      author: "Ushanas Shastri",
-      position: "CTO",
-      company: "Viteos Capital Market Services",
-      location: "Mumbai"
+        "Kontora's team is exceptional! Their creativity and dedication shine in every detail. Their work exceeds expectations. Working with them was a delight. I wholeheartedly recommend Kontora for their outstanding expertise.",
+      author: "Elon Musk",
+      position: "CEO",
+      company: "SpaceX, Tesla",
+      location: "USA"
     },
     {
       title:
-        "I feel his budding leadership abilities will become even more effective in a diverse and challenging environment.",
-      author: "Anil Dukkipatty",
-      position: "CTO",
-      company: "Elemential Labs",
-      location: "Mumbai"
+          "Контора - высший класс. Их работа – воплощение искусства в дизайне и разработке. Работать с ними - настоящее удовольствие. Рекомендую всем, кто ценит качество и профессионализм.",
+      author: "Павел Дуров",
+      position: "Генеральный директор",
+      company: "ВК, Telegram",
+      location: "Россия"
     },
     {
       title:
-        "He has gained great knowledge and experience of SDE, and has learned ot develop the application keeping in mind the client's perpective and also making it creative.",
-      author: "Chintan Shah",
-      position: "Director",
-      company: "Hridayam Soft Solution",
-      location: "Mumbai"
+        "Kontora is phenomenal! Their innovative approach and precision are unmatched. Their work is transformative and sets new standards. Collaborating with them was brilliant. I highly endorse Kontora for their unparalleled skillset.",
+      author: "Mark Zuckerberg",
+      position: "CEO",
+      company: "Facebook",
+      location: "USA"
     },
     {
       title:
-        "During the course of his employment we have found him to be a self-started who was motivated, duty bound and a highly commited team player.",
-      author: "Mrinal Pai",
-      position: "Co-Founder & Director",
-      company: "Skylark Drones",
-      location: "Bangalore"
-    }
+        "Kontora’s brilliance is unparalleled. Their precision and dedication redefine excellence. Working with them was exceptional—truly a transformative experience. I highly recommend Kontora for their outstanding expertise and professionalism.",
+      author: "Bill Gates",
+      position: "CEO",
+      company: "Microsoft",
+      location: "USA"
+    },
   ]
 };
 
