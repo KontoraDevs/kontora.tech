@@ -1,163 +1,193 @@
 <template>
-  <div
-    :class="{ 'bg-white': !nightMode, 'bg-dark': nightMode }"
-    class="pt-5 p-st"
-  >
-    <div
-      class="container"
-      data-aos="fade"
-      data-aos-once="true"
-      data-aos-duration="1000"
-    >
-      <div class="row align-items-center">
-        <div class="col-xl-6 col-bg-6 col-md-6 col-sm-12 text-center">
-          <img :src="picture" />
+  <section class="hero">
+    <div class="hero-blob"></div>
+    <div class="k-container">
+      <div class="hero-content">
+        <div class="hero-label">Веб-студия · Россия</div>
+        <h1 class="hero-h1">
+          Делаем сайты,<br />
+          которые <span class="accent">работают.</span>
+        </h1>
+        <p class="hero-sub">
+          Разрабатываем сложные веб-приложения и лендинги под ключ.
+          Берёмся за нестандартные задачи — решаем их быстро и качественно.
+        </p>
+        <div class="hero-ctas">
+          <button class="btn-primary" @click="scrollTo('contact')">Обсудить проект</button>
+          <button class="btn-secondary" @click="scrollTo('portfolio')">Смотреть портфолио</button>
         </div>
-        <div class="col-xl-6 col-bg-6 col-md-6 col-sm-12 pt-5">
-          <span
-            class="home-title"
-            :class="{ pgray: !nightMode, 'text-light': nightMode }"
-            >Контора!</span
-          >
-          <div>
-            <p v-html="description"></p>
-          </div>
-          <div class="text-center pb-4">
-            <button
-                class="btn btn-outline-secondary mx-2 "
-                @click="open('telegram')"
-                v-tooltip.bottom="'Telegram'"
-            >
-              <i class="fab fa-telegram"></i>
-            </button>
-            <button
-              class="btn btn-outline-secondary mx-2"
-              @click="open('github')"
-              v-tooltip.bottom="'GitHub'"
-            >
-              <i class="fab fa-github"></i>
-            </button>
-            <button
-                class="btn btn-outline-secondary mx-2"
-                @click="open('mail')"
-                v-tooltip.bottom="'Mail'"
-            >
-              <i class="fa fa-envelope"></i>
-            </button>
-          </div>
+        <div class="hero-metrics">
+          <span>5 лет опыта</span>
+          <span class="dot">·</span>
+          <span>47 проектов</span>
+          <span class="dot">·</span>
+          <span>Full Stack</span>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-import info from "../../info";
-
-import Wave from "./helpers/Wave";
-
 export default {
   name: "Home",
-  components: {
-    Wave,
-  },
-  props: {
-    nightMode: {
-      type: Boolean,
-    },
-  },
-  data() {
-    return {
-      picture: info.flat_picture,
-      description: info.description,
-      name: info.name,
-      linkedin: info.links.linkedin,
-      github: info.links.github,
-      mail: info.links.mail,
-      telegram: info.links.telegram,
-      angellist: info.links.angellist,
-      resume: info.links.resume
-    };
-  },
   methods: {
-    open(link) {
-      switch (link) {
-        case "linkedin":
-          window.open(this.linkedin, "_blank");
-          break;
-        case "github":
-          window.open(this.github, "_blank");
-          break;
-        case "angellist":
-          window.open(this.angellist, "_blank");
-          break;
-        case "resume":
-          window.open(this.resume, "_blank");
-          break;
-        case "telegram":
-          window.open(this.telegram, "_blank");
-          break;
-        case "mail":
-          window.open(this.mail, "_blank");
-          break;
-      }
+    scrollTo(section) {
+      const el = document.getElementById(section);
+      if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: "smooth" });
     },
   },
 };
 </script>
 
 <style scoped>
-.home-title {
-  font-size: 28px;
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: #0a0a0a;
+}
+
+/* Gradient blob */
+.hero-blob {
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 700px;
+  height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255, 92, 0, 0.15) 0%, rgba(255, 140, 0, 0.1) 40%, transparent 70%);
+  animation: blob-move 8s ease-in-out infinite;
+  pointer-events: none;
+  filter: blur(40px);
+}
+
+@keyframes blob-move {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-30px, 20px) scale(1.05); }
+  66% { transform: translate(20px, -20px) scale(0.95); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding: 100px 0 80px;
+}
+
+.hero-label {
+  display: inline-flex;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #888888;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 32px;
+}
+
+.hero-h1 {
+  font-size: clamp(40px, 6vw, 64px);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -2px;
+  color: #f0f0f0;
+  margin-bottom: 24px;
+}
+
+.hero-sub {
+  font-size: 18px;
+  color: #888888;
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 40px;
+}
+
+.hero-ctas {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.btn-primary {
+  background: #ff5c00;
+  color: #000;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 16px 32px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: inherit;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #f0f0f0;
+  font-weight: 500;
+  font-size: 15px;
+  padding: 16px 32px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  font-family: inherit;
+}
+
+.btn-secondary:hover {
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.04);
+  transform: translateY(-2px);
+}
+
+.hero-metrics {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14px;
+  color: #888888;
   font-weight: 500;
 }
 
-img {
-  max-width: 500px;
-  margin-top: 60px;
+.hero-metrics .dot {
+  opacity: 0.4;
 }
 
-@media only screen and (max-width: 580px) {
-  img {
-    object-fit: cover;
-    border-radius: 50%;
-    height: 200px;
-    width: 200px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 2px solid rgb(205, 205, 205);
+@media (max-width: 768px) {
+  .hero-h1 {
+    letter-spacing: -1px;
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
+  .hero-blob {
+    width: 400px;
+    height: 400px;
+    top: 0;
+    right: -20%;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+  }
+
+  .btn-primary, .btn-secondary {
+    text-align: center;
+    width: 100%;
   }
 }
-
-.fa {
-  font-size: 15px;
-}
-
-.btn {
-  border-color: #669db3ff;
-  color: #669db3ff;
-}
-
-.btn:hover {
-  background-color: #669db3ff;
-  border-color: #669db3ff;
-  color: white;
-}
-
-.btn:focus {
-  background-color: #669db3ff;
-  border-color: #669db3ff;
-  color: white;
-}
-
-.btn:focus {
-  outline: none !important;
-}
-
-p {
-  text-align: justify;
-  font-weight: 400;
-}
-
-/* LEAVES */
 </style>

@@ -1,94 +1,137 @@
 <template>
-  <div :class="{ 'bg-white': !nightMode, 'bg-dark': nightMode }" class="p-st">
-    <div class="container py-4">
-      <div
-        class="text-center"
-        data-aos="fade"
-        data-aos-once="true"
-        data-aos-duration="1000"
-      >
-        <span
-          class="title text-center"
-          :class="{ pgray: !nightMode, 'text-light': nightMode }"
-          >рекомендации.</span
-        >
+  <section class="reviews">
+    <div class="k-container">
+
+      <div class="section-header fade-in">
+        <span class="section-label">Отзывы клиентов</span>
       </div>
-      <hr
-        width="50%"
-        :class="{ pgray: !nightMode, 'bg-secondary': nightMode }"
-      />
-      <div class="row">
-        <div
-          class="col-xl-6 col-bg-6 col-md-6 col-sm-12 py-3 px-5"
-          v-for="d in data"
-          :key="d.author"
-        >
-          <div
-            class="title2"
-            data-aos="fade-up"
-            data-aos-once="true"
-            data-aos-easing="ease-in-out"
-            data-aos-mirror="true"
-          >
-            <span>"{{ d.title }}"</span>
-          </div>
-          <div
-            class="title3 float-right py-2 pl-5"
-            data-aos="fade-up"
-            data-aos-once="true"
-            data-aos-easing="ease-in-out"
-            data-aos-mirror="true"
-          >
-            <span>
-              – {{ d.author }}, {{ d.position }}, {{ d.company }},
-              {{ d.location }}</span
-            >
+
+      <div class="reviews-grid">
+        <div class="review-card fade-in" v-for="(review, idx) in reviews" :key="idx" :style="{ transitionDelay: (idx * 0.1) + 's' }">
+          <div class="quote-icon">"</div>
+          <p class="review-text">{{ review.title }}</p>
+          <div class="review-author">
+            <span class="author-name">{{ review.author }}</span>
+            <span class="author-meta">{{ review.position }}, {{ review.company }}</span>
           </div>
         </div>
       </div>
+
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
-import info from "../../info";
+// TODO: заменить на реальные отзывы
+const reviews = [
+  {
+    title: "Команда Kontora выполнила проект точно в срок и с высоким качеством. Внедрили нестандартное решение, которое ускорило работу нашего сайта в несколько раз. Рекомендуем.",
+    author: "Алексей К.",
+    position: "Директор",
+    company: "Getpolis",
+  },
+  {
+    title: "Работали над созданием интернет-магазина. Ребята вникли в задачу, предложили удобный UX. Результат превзошёл ожидания — конверсия выросла ощутимо.",
+    author: "Мария Д.",
+    position: "Основатель",
+    company: "Entomosphera",
+  },
+  {
+    title: "Разработали лендинг для нашего фестиваля. Всё сделано аккуратно, без задержек. Приятно работать с командой, которая понимает задачу с первого раза.",
+    author: "Игорь С.",
+    position: "Организатор",
+    company: "Степная История",
+  },
+];
 
 export default {
   name: "Recommendation",
-  props: {
-    nightMode: {
-      type: Boolean,
-    },
-  },
   data() {
-    return {
-      data: info.recommendations,
-    };
+    return { reviews };
   },
 };
 </script>
 
 <style scoped>
-.title {
-  font-size: 30px;
-  font-weight: 500;
-}
-.title1 {
-  font-size: 24px;
-  font-weight: 400;
+.reviews {
+  padding: 100px 0;
+  background-color: #111111;
 }
 
-.title2 {
-  font-size: 18px;
-  font-weight: 400;
-  font-style: italic;
-  text-align: justify;
+.section-header {
+  margin-bottom: 56px;
 }
 
-.title3 {
-  opacity: 0.7;
-  font-size: 16px;
-  font-weight: 400;
-  text-align: right;
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.review-card {
+  background: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+
+.review-card:hover {
+  border-color: rgba(255, 92, 0, 0.3);
+  transform: translateY(-4px);
+}
+
+.quote-icon {
+  font-size: 72px;
+  line-height: 0.6;
+  color: #ff5c00;
+  font-family: Georgia, serif;
+  font-weight: 700;
+  opacity: 0.6;
+}
+
+.review-text {
+  font-size: 15px;
+  color: #c0c0c0;
+  line-height: 1.7;
+  flex: 1;
+}
+
+.review-author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.author-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #f0f0f0;
+}
+
+.author-meta {
+  font-size: 13px;
+  color: #666666;
+}
+
+@media (max-width: 1024px) {
+  .reviews-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .reviews {
+    padding: 80px 0;
+  }
+
+  .reviews-grid {
+    grid-template-columns: 1fr;
+  }
 }
 </style>

@@ -1,14 +1,14 @@
 <template>
-  <div id="app" :class="{ 'text-dark': !nightMode, 'text-light': nightMode }">
-    <Navbar @scroll="scrollTo" @nightMode="switchMode" :nightMode="nightMode" />
+  <div id="app">
+    <Navbar @scroll="scrollTo" />
     <div class="parent">
-      <Home :nightMode="nightMode" />
-      <About id="about" :nightMode="nightMode" />
-      <Skills id="skills" :nightMode="nightMode" />
-      <Portfolio id="portfolio" :nightMode="nightMode" />
-<!--      <Recommendation :nightMode="nightMode" />-->
-      <Contact id="contact" :nightMode="nightMode" />
-      <Footer :nightMode="nightMode" />
+      <Home />
+      <About id="about" />
+      <Skills id="skills" />
+      <Portfolio id="portfolio" />
+      <Recommendation id="reviews" />
+      <Contact id="contact" />
+      <Footer />
     </div>
   </div>
 </template>
@@ -23,8 +23,6 @@ import Recommendation from "./components/Recommendation";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
-import info from "../info";
-
 export default {
   name: "App",
   components: {
@@ -37,41 +35,34 @@ export default {
     Contact,
     Footer,
   },
-  data() {
-    return {
-      nightMode: false,
-      config: info.config,
-    };
-  },
-  created() {
-    if (this.config.use_cookies) {
-      this.nightMode = this.$cookie.get("nightMode") === "true" ? true : false;
-    }
-  },
   mounted() {
-    ["about", "contact", "skills", "portfolio"].forEach((l) => {
+    ["about", "skills", "portfolio", "contact"].forEach((l) => {
       if (window.location.href.includes(l)) {
-        var elementPosition = document.getElementById(l).offsetTop;
-        window.scrollTo({ top: elementPosition - 35, behavior: "smooth" });
+        const el = document.getElementById(l);
+        if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: "smooth" });
       }
     });
+
+    // IntersectionObserver for fade-in animations
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll(".fade-in").forEach((el) => observer.observe(el));
   },
   methods: {
-    switchMode(mode) {
-      if (this.config.use_cookies) {
-        this.$cookie.set("nightMode", mode);
-      }
-      this.nightMode = mode;
-    },
     scrollTo(ele) {
-      if (ele == "home") {
-        this.$router.push(`/`);
-        window.scrollTo({ top: -80, behavior: "smooth" });
+      if (ele === "home") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
       } else {
-        var elementPosition = document.getElementById(ele).offsetTop;
-        window.scrollTo({ top: elementPosition - 35, behavior: "smooth" });
-        if (this.$router.history.current.path !== `/${ele}`)
-          this.$router.push(`/${ele}`);
+        const el = document.getElementById(ele);
+        if (el) window.scrollTo({ top: el.offsetTop - 70, behavior: "smooth" });
       }
     },
   },
@@ -79,174 +70,96 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: "Montserrat", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  width: 100%;
+:root {
+  --bg-page: #0a0a0a;
+  --bg-card: #111111;
+  --bg-card-alt: #161616;
+  --accent: #ff5c00;
+  --text-primary: #f0f0f0;
+  --text-secondary: #888888;
+  --border: rgba(255, 255, 255, 0.08);
 }
 
-@media screen and (max-width: 580px) {
-  #app {
-    width: fit-content;
-  }
+html {
+  scroll-behavior: smooth;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-page);
+  color: var(--text-primary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#app {
+  width: 100%;
+  background-color: var(--bg-page);
 }
 
 .parent {
-  margin-top: 38px;
-  padding-top: 40px;
   position: relative;
 }
 
-.pgray {
-  color: #535a5e;
+/* Section title style */
+.section-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  color: var(--text-secondary);
 }
 
-.pblue {
-  color: #669db3ff;
+/* Fade-in animation via IntersectionObserver */
+.fade-in {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
-.bg-dark2 {
-  background-color: #262c30 !important;
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-.text-light {
-  color: #d3d2d2 !important;
-}
-
-.p-st {
-  transition: all 0.5s !important;
-}
-
-/* To set scrollbar width */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
-
-/* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 9px;
-  border: 2px solid white; /* Use your background color instead of White */
-  background-clip: content-box;
+  background: var(--bg-page);
 }
-
-/* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888;
-  border-radius: 9px;
+  background: #333;
+  border-radius: 4px;
 }
-
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
-.tooltip {
-  display: block !important;
-  z-index: 10000;
+/* Utility */
+.accent {
+  color: var(--accent);
 }
 
-.tooltip .tooltip-inner {
-  background: rgb(212, 149, 97);
-  color: white;
-  border-radius: 8px;
-  font-size: 10px;
-  /* padding: 5px 10px 4px; */
+/* Container */
+.k-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
 }
 
-.tooltip .tooltip-arrow {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  position: absolute;
-  margin: 5px;
-  border-color: rgb(212, 149, 97);
-  z-index: 1;
-}
-
-.tooltip[x-placement^="top"] {
-  margin-bottom: 5px;
-}
-
-.tooltip[x-placement^="top"] .tooltip-arrow {
-  border-width: 5px 5px 0 5px;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
-  border-bottom-color: transparent !important;
-  bottom: -5px;
-  left: calc(50% - 5px);
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.tooltip[x-placement^="bottom"] {
-  margin-top: 10px;
-}
-
-.tooltip[x-placement^="bottom"] .tooltip-arrow {
-  border-width: 0 5px 5px 5px;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
-  border-top-color: transparent !important;
-  top: -5px;
-  left: calc(50% - 5px);
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.tooltip[x-placement^="right"] {
-  margin-left: 5px;
-}
-
-.tooltip[x-placement^="right"] .tooltip-arrow {
-  border-width: 5px 5px 5px 0;
-  border-left-color: transparent !important;
-  border-top-color: transparent !important;
-  border-bottom-color: transparent !important;
-  left: -5px;
-  top: calc(50% - 5px);
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.tooltip[x-placement^="left"] {
-  margin-right: 5px;
-}
-
-.tooltip[x-placement^="left"] .tooltip-arrow {
-  border-width: 5px 0 5px 5px;
-  border-top-color: transparent !important;
-  border-right-color: transparent !important;
-  border-bottom-color: transparent !important;
-  right: -5px;
-  top: calc(50% - 5px);
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.tooltip.popover .popover-inner {
-  background: #f9f9f9;
-  color: black;
-  padding: 24px;
-  border-radius: 5px;
-  box-shadow: 0 5px 30px rgba(black, 0.1);
-}
-
-.tooltip.popover .popover-arrow {
-  border-color: #f9f9f9;
-}
-
-.tooltip[aria-hidden="true"] {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity 0.5s, visibility 0.5s;
-}
-
-.tooltip[aria-hidden="false"] {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.5s;
+@media (max-width: 768px) {
+  .k-container {
+    padding: 0 16px;
+  }
 }
 </style>

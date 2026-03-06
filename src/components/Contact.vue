@@ -1,254 +1,287 @@
 <template>
-  <div
-    class="py-4 p-st"
-    :class="{
-      'bg-light': !nightMode,
-      'bg-dark2': nightMode,
-      'text-light': nightMode,
-    }"
-  >
-    <div class="container">
-      <div
-        class="text-center"
-        data-aos="fade"
-        data-aos-once="true"
-        data-aos-duration="1000"
-      >
-        <span
-          class="title text-center"
-          :class="{ pgray: !nightMode, 'text-light': nightMode }"
-          >контакты.</span
-        >
-      </div>
-      <hr
-        width="50%"
-        :class="{ pgray: !nightMode, 'bg-secondary': nightMode }"
-      />
-      <br />
-      <div class="text-center">
-        <div
-          class="mb-3"
-          data-aos="fade-up"
-          data-aos-once="true"
-          data-aos-duration="1000"
-        >
-          <input
-            type="text"
-            name="user_name"
-            v-model="name"
-            placeholder="имя"
-            class="pinput"
-            :class="{
-              pgray: !nightMode,
-              'pgray-dark': nightMode,
-              'text-light': nightMode,
-            }"
-            style="transition-delay: 0.2s"
-          />
-        </div>
+  <section class="contact">
+    <div class="k-container">
 
-        <div
-          class="my-3"
-          data-aos="fade-up"
-          data-aos-once="true"
-          data-aos-duration="1000"
-        >
-          <input
-            type="email"
-            name="user_email"
-            v-model="email"
-            placeholder="почта"
-            class="pinput"
-            :class="{
-              pgray: !nightMode,
-              'pgray-dark': nightMode,
-              'text-light': nightMode,
-            }"
-            style="transition-delay: 0.4s"
-          />
-        </div>
-
-        <div
-          class="my-3"
-          data-aos="fade-up"
-          data-aos-once="true"
-          data-aos-duration="1000"
-        >
-          <textarea
-            name="message"
-            v-model="text"
-            placeholder="сообщение"
-            class="pinput"
-            rows="4"
-            :class="{
-              pgray: !nightMode,
-              'pgray-dark': nightMode,
-              'text-light': nightMode,
-            }"
-            style="transition-delay: 0.6s"
-          ></textarea>
-        </div>
-
-        <button
-          @click.prevent="sendEmail"
-          class="mt-1 btn mb-3"
-          data-aos="fade"
-          data-aos-once="true"
-          data-aos-duration="1000"
-          data-aos-offset="50"
-        >
-          Отправить
-        </button>
+      <div class="section-header fade-in">
+        <span class="section-label">Контакты</span>
       </div>
 
-      <Snackbar
-        :showSnackbar="showSnackbar"
-        @close="closeSnackbar"
-        :snackbarMessage="snackbarMessage"
-        :snackbarColor="snackbarColor"
-      />
+      <div class="contact-layout fade-in">
+
+        <!-- Left: direct contacts -->
+        <div class="contact-info">
+          <h2 class="contact-title">Обсудим ваш проект?</h2>
+          <p class="contact-sub">Ответим в течение 24 часов. Расскажите о задаче — предложим решение.</p>
+
+          <div class="contact-links">
+            <a :href="mail" class="contact-link">
+              <span class="link-icon">✉</span>
+              <span>kontoradevs@yandex.ru</span>
+            </a>
+            <a :href="telegram" target="_blank" class="contact-link">
+              <span class="link-icon">✈</span>
+              <span>@santariver</span>
+            </a>
+            <a :href="github" target="_blank" class="contact-link">
+              <span class="link-icon">◑</span>
+              <span>github.com/KontoraDevs</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right: form -->
+        <form class="contact-form" @submit.prevent="sendEmail">
+          <div class="form-group">
+            <input
+              type="text"
+              v-model="name"
+              placeholder="Ваше имя"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              type="email"
+              v-model="email"
+              placeholder="Email"
+              class="form-input"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <textarea
+              v-model="text"
+              placeholder="Расскажите о вашем проекте..."
+              class="form-input"
+              rows="5"
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="btn-primary">Отправить сообщение</button>
+
+          <p v-if="statusMsg" class="form-status" :class="{ success: statusOk, error: !statusOk }">
+            {{ statusMsg }}
+          </p>
+        </form>
+
+      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
 import config from "../../config";
 import emailjs from "emailjs-com";
-
-import Snackbar from "./helpers/Snackbar";
+import info from "../../info";
 
 export default {
   name: "Contact",
-  components: {
-    Snackbar,
-  },
-  props: {
-    nightMode: {
-      type: Boolean,
-    },
-  },
   data() {
     return {
       email: "",
       name: "",
       text: "",
-      showSnackbar: false,
-      snackbarMessage: "",
-      snackbarColor: "",
+      statusMsg: "",
+      statusOk: false,
+      mail: info.links.mail,
+      telegram: info.links.telegram,
+      github: info.links.github,
     };
   },
   methods: {
-    closeSnackbar(val) {
-      if (!val) {
-        setTimeout(() => {
-          this.showSnackbar = val;
-        }, 1000);
-      }
-    },
     sendEmail() {
       if (!this.email || !this.name || !this.text) {
-        this.showSnackbar = true;
-        this.snackbarMessage = "Пожалуйста, заполните все поля";
-        this.snackbarColor = "rgb(212, 149, 97)";
-      } else {
-        var obj = {
-          user_email: this.email,
-          from_name: this.name,
-          message_html: this.text,
-          to_name: "Контора",
-        };
-
-        emailjs
-          .send(
-            config.emailjs.serviceID,
-            config.emailjs.templateID,
-            obj,
-            config.emailjs.userID
-          )
-          .then(
-            (result) => {
-              this.showSnackbar = true;
-              this.snackbarMessage = "Спасибо! Сообщение отправлено.";
-              this.snackbarColor = "#1aa260";
-
-              this.email = "";
-              this.text = "";
-              this.name = "";
-            },
-            (error) => {
-              this.showSnackbar = true;
-              this.snackbarMessage = "Oops! Something went wrong.";
-              this.snackbarColor = "rgb(212, 149, 97)";
-            }
-          );
+        this.statusMsg = "Пожалуйста, заполните все поля";
+        this.statusOk = false;
+        return;
       }
+
+      emailjs
+        .send(
+          config.emailjs.serviceID,
+          config.emailjs.templateID,
+          {
+            user_email: this.email,
+            from_name: this.name,
+            message_html: this.text,
+            to_name: "Контора",
+          },
+          config.emailjs.userID
+        )
+        .then(() => {
+          this.statusMsg = "Спасибо! Сообщение отправлено. Ответим в течение 24 часов.";
+          this.statusOk = true;
+          this.email = "";
+          this.name = "";
+          this.text = "";
+        })
+        .catch(() => {
+          this.statusMsg = "Что-то пошло не так. Напишите нам напрямую.";
+          this.statusOk = false;
+        });
     },
   },
 };
 </script>
 
 <style scoped>
-.title {
-  font-size: 30px;
-  font-weight: 500;
-}
-.title1 {
-  font-size: 24px;
-  font-weight: 400;
+.contact {
+  padding: 100px 0;
+  background-color: #0a0a0a;
 }
 
-.title2 {
-  font-size: 20px;
-  font-weight: 400;
+.section-header {
+  margin-bottom: 56px;
 }
 
-.title3 {
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+/* Left side */
+.contact-title {
+  font-size: 36px;
+  font-weight: 800;
+  color: #f0f0f0;
+  line-height: 1.2;
+  margin-bottom: 16px;
+  letter-spacing: -1px;
+}
+
+.contact-sub {
   font-size: 16px;
-  font-weight: 400;
+  color: #888888;
+  line-height: 1.7;
+  margin-bottom: 40px;
 }
 
-.pinput {
-  font-size: 18px;
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-decoration: none;
+  color: #c0c0c0;
+  font-size: 15px;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.contact-link:hover {
+  color: #ff5c00;
+  text-decoration: none;
+}
+
+.link-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  font-size: 16px;
+  flex-shrink: 0;
+  transition: border-color 0.2s;
+}
+
+.contact-link:hover .link-icon {
+  border-color: rgba(255, 92, 0, 0.4);
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-group {
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  background: #111111;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  color: #f0f0f0;
+  font-size: 15px;
+  font-family: inherit;
+  padding: 14px 18px;
   outline: none;
+  transition: border-color 0.2s;
+  resize: vertical;
+}
+
+.form-input::placeholder {
+  color: #555555;
+}
+
+.form-input:focus {
+  border-color: rgba(255, 92, 0, 0.5);
+}
+
+.btn-primary {
+  background: #ff5c00;
+  color: #000;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 16px 32px;
+  border-radius: 8px;
   border: none;
-  border-radius: 7px;
-  padding: 10px;
-  width: 50%;
-  transition: all 1s;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.2s;
+  font-family: inherit;
+  width: 100%;
 }
 
-.btn {
-  border-color: #669db3ff;
-  color: #669db3ff;
-  width: 50%;
+.btn-primary:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
 }
 
-.btn:hover {
-  background-color: #669db3ff;
-  border-color: #669db3ff;
-  color: white;
+.form-status {
+  font-size: 14px;
+  padding: 12px;
+  border-radius: 8px;
+  text-align: center;
 }
 
-.btn:focus {
-  background-color: #669db3ff;
-  border-color: #669db3ff;
-  color: white;
+.form-status.success {
+  color: #4ade80;
+  background: rgba(74, 222, 128, 0.08);
+  border: 1px solid rgba(74, 222, 128, 0.2);
 }
 
-.pgray-dark {
-  background-color: #3c4148 !important;
+.form-status.error {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.2);
 }
 
-@media screen and (max-width: 1000px) {
-  .pinput {
-    width: 90%;
+@media (max-width: 768px) {
+  .contact {
+    padding: 80px 0;
   }
-  .pinput {
-    width: 90%;
+
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 48px;
   }
 
-  .btn {
-    width: 90%;
+  .contact-title {
+    font-size: 28px;
   }
 }
 </style>
