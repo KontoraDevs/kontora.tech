@@ -6,7 +6,7 @@
       <About id="about" />
       <Skills id="skills" />
       <Portfolio id="portfolio" />
-      <Recommendation id="reviews" />
+<!--      <Recommendation id="reviews" />-->
       <Contact id="contact" />
       <Footer />
     </div>
